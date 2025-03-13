@@ -1,1 +1,29 @@
-<p>user-card works!</p>
+<div>
+  <div class="card text-white shadow p-2 rounded">
+    <div class="avatar-container">
+      <figure class="avatar">
+        <img
+          [src]="myUser.image"
+          [alt]="myUser.first_name"
+          class="img-fluid rounded-circle border border-warning border-3"
+        />
+      </figure>
+    </div>
+    <hr />
+    <div class="text-container">
+      <p class="fs-2">{{ myUser.first_name }}</p>
+      <p class="fs-5">{{ myUser.last_name }}</p>
+    </div>
+    <div class="btn-container column p-3">
+      <button type="button" class="btn btn-outline-primary text-white">
+        Ver
+      </button>
+      <button type="button" class="btn btn-outline-primary mx-3 text-white">
+        Actualizar
+      </button>
+      <button type="button" class="btn btn-outline-danger delete">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>
