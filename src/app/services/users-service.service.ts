@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { IResponse } from '../interfaces/iresponse.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +10,7 @@ export class UsersServiceService {
   private http = inject(HttpClient);
   private baseUrl: string = 'https://peticiones.online/api/users';
 
-  getAll(): any {
-    return this.http.get<any>(this.baseUrl);
+  getAllObservable(): Observable<IResponse> {
+    return this.http.get<IResponse>(this.baseUrl);
   }
 }
