@@ -15,7 +15,11 @@
       <p class="fs-5">{{ myUser.last_name }}</p>
     </div>
     <div class="btn-container column p-3">
-      <button type="button" class="btn btn-outline-primary text-white">
+      <button
+        type="button"
+        class="btn btn-outline-primary text-white"
+        [routerLink]="['/user', myUser.id]"
+      >
         Ver
       </button>
       <button type="button" class="btn btn-outline-primary mx-3 text-white">

@@ -7,7 +7,7 @@ import { UpdateUserComponent } from './pages/update-user/update-user.component';
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'user/:id', component: ViewUserComponent },
+  { path: 'user/:idUser', component: ViewUserComponent },
   { path: 'newuser', component: NewUserComponent },
   { path: 'updateuser/:id', component: UpdateUserComponent },
 ];

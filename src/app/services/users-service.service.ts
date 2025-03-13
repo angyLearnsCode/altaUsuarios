@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IResponse } from '../interfaces/iresponse.interface';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
+import { IUser } from '../interfaces/iuser.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +13,9 @@ export class UsersServiceService {
 
   getAllObservable(): Observable<IResponse> {
     return this.http.get<IResponse>(this.baseUrl);
+  }
+
+  getById(id: number): Promise<IUser> {
+    return lastValueFrom(this.http.get<IUser>(`${this.baseUrl}/${id}`));
   }
 }
