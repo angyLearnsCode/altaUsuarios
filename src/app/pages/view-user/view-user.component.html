@@ -1,5 +1,29 @@
-<section>
-  <div class="row">
-    <figure></figure>
+<section class="container py-5 text-white">
+  <div class="wrapper row py-3 shadow">
+    <figure class="col-12 col-md-3">
+      <img
+        [src]="theUser.image"
+        alt="theUser.first_name"
+        class="img-fluid mt-3 rounded-circle"
+      />
+    </figure>
+    <div class="col-12 col-md-9 px-5">
+      <h1 class="">{{ theUser.first_name }} {{ theUser.last_name }}</h1>
+      <hr class="mb-4" />
+      <p class="">
+        Nombre de usuario: <br />
+        <span class="fs-4">{{ theUser.username }}</span>
+      </p>
+      <p class="">
+        Email: <br />
+        <span class="fs-4">{{ theUser.email }}</span>
+      </p>
+      <button class="btn btn-outline-primary text-white mt-3">
+        Actualizar datos
+      </button>
+    </div>
   </div>
+  <button class="btn btn-outline-danger mt-3 btn-eliminar">
+    Eliminar este usuario
+  </button>
 </section>

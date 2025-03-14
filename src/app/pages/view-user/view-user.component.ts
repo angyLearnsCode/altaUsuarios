@@ -12,13 +12,13 @@ import { lastValueFrom } from 'rxjs';
 export class ViewUserComponent {
   @Input() idUser: string = '';
   theUser!: IUser;
-  usersService = inject(UsersServiceService);
+  userService = inject(UsersServiceService);
 
   async ngOnInit() {
-    let id = Number(this.idUser);
-
+    let id = this.idUser;
     try {
-      this.theUser = await this.usersService.getById(id);
+      this.theUser = await this.userService.getById(id);
+      console.log(this.theUser);
     } catch (error) {
       console.log(error);
     }

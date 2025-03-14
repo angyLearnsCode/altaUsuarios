@@ -1,0 +1,17 @@
+.wrapper {
+  background-color: #353b48;
+  border-radius: 10px;
+  align-items: center;
+}
+
+figure img {
+  margin-left: 10px;
+}
+
+.btn {
+  width: 300px;
+}
+
+.btn-eliminar {
+  float: right;
+}
