@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-new-user',
@@ -10,12 +16,28 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class NewUserComponent {
   userForm: FormGroup;
 
+  checkControl(controlName: string, errorName: string): boolean | undefined {
+    return (
+      this.userForm.get(controlName)?.hasError(errorName) &&
+      this.userForm.get(controlName)?.touched
+    );
+  }
+
   constructor() {
     this.userForm = new FormGroup(
       {
-        first_name: new FormControl('', []),
-        last_name: new FormControl('', []),
-        email: new FormControl('', []),
+        first_name: new FormControl('', [
+          Validators.required,
+          Validators.minLength(3),
+        ]),
+        last_name: new FormControl('', [
+          Validators.required,
+          Validators.minLength(3),
+        ]),
+        email: new FormControl('', [
+          Validators.required,
+          Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/),
+        ]),
         username: new FormControl('', []),
         password: new FormControl('', []),
         repitepassword: new FormControl('', []),

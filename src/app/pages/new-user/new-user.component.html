@@ -2,6 +2,11 @@
   <h2>Formulario de alta de usuarios</h2>
   <hr />
   <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+    @if(checkControl('first_name', 'required')){
+    <p class="error">El campo es obligatorio</p>
+    } @if(checkControl('first_name', 'minlength')){
+    <p class="error">El campo debe tener al menos 3 caracteres</p>
+    }
     <div class="mb-3">
       <label for="first_name" class="form-label">Nombre</label>
       <input
@@ -11,6 +16,12 @@
         formControlName="first_name"
       />
     </div>
+
+    @if(checkControl('last_name', 'required')){
+    <p class="error">El campo es obligatorio</p>
+    } @if(checkControl('last_name', 'minlength')){
+    <p class="error">El campo debe tener al menos 3 caracteres</p>
+    }
     <div class="mb-3">
       <label for="last_name" class="form-label">Apellidos</label>
       <input
@@ -20,6 +31,12 @@
         formControlName="last_name"
       />
     </div>
+
+    @if(checkControl('email', 'required')){
+    <p class="error">El campo es obligatorio</p>
+    } @if(checkControl('email', 'pattern')){
+    <p class="error">Formato de email no válido</p>
+    }
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input
