@@ -2,10 +2,16 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { toast, NgxSonnerToaster } from 'ngx-sonner';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, ReactiveFormsModule],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    ReactiveFormsModule,
+    NgxSonnerToaster,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
