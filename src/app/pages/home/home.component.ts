@@ -14,7 +14,7 @@ export class HomeComponent {
   userService = inject(UsersServiceService);
   arrUsersObservable: IUser[] = [];
 
-  async ngOnInit() {
+  async loadUsers() {
     this.userService.getAllObservable().subscribe({
       next: (data) => {
         this.arrUsersObservable = data.results;
@@ -23,5 +23,15 @@ export class HomeComponent {
         console.log(error);
       },
     });
+  }
+
+  ngOnInit() {
+    this.loadUsers();
+  }
+
+  deleteUser(event: Boolean) {
+    if (event) {
+      this.loadUsers();
+    }
   }
 }

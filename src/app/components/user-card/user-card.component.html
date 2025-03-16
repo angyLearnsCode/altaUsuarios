@@ -13,5 +13,8 @@
     <p class="fs-2">{{ myUser.first_name }}</p>
     <p class="fs-5">{{ myUser.last_name }}</p>
   </div>
-  <app-buttons [myUser]="myUser"></app-buttons>
+  <app-buttons
+    [myUser]="myUser"
+    (deleteItemEmit)="deleteUser($event)"
+  ></app-buttons>
 </div>

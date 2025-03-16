@@ -2,7 +2,11 @@
   <div class="row g-4 justify-content-cente mt-1 mx-3">
     @for (user of arrUsersObservable; track user._id) {
     <article class="col-12 col-md-6 col-lg-3">
-      <div app-user-card [myUser]="user"></div>
+      <div
+        app-user-card
+        [myUser]="user"
+        (deleteItemEmit)="deleteUser($event)"
+      ></div>
     </article>
     }
   </div>

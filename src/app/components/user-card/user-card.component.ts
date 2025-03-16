@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/iuser.interface';
 import { ButtonsComponent } from '../../shared/buttons/buttons.component';
 
@@ -10,4 +10,9 @@ import { ButtonsComponent } from '../../shared/buttons/buttons.component';
 })
 export class UserCardComponent {
   @Input() myUser!: IUser;
+  @Output() deleteItemEmit: EventEmitter<Boolean> = new EventEmitter();
+
+  deleteUser(event: Boolean) {
+    this.deleteItemEmit.emit(event);
+  }
 }
