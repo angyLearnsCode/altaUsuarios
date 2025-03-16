@@ -1,1 +1,23 @@
-<p>buttons works!</p>
+<div class="btn-container column p-3">
+  <button
+    type="button"
+    class="btn btn-outline-primary text-white"
+    [routerLink]="['/user', myUser._id]"
+  >
+    Ver
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-primary text-white"
+    [routerLink]="['/updateuser', myUser._id]"
+  >
+    Actualizar
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-danger delete"
+    (click)="deleteUser(myUser._id)"
+  >
+    Eliminar
+  </button>
+</div>
