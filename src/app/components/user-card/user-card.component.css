@@ -18,3 +18,9 @@
 .btn {
   width: 110px;
 }
+
+.btn-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}

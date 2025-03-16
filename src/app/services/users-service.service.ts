@@ -10,8 +10,6 @@ import { IUser } from '../interfaces/iuser.interface';
 export class UsersServiceService {
   private http = inject(HttpClient);
   private baseUrl: string = 'https://peticiones.online/api/users';
-  private id: string = '67d40edb7e4279bab23a23e1';
-  arrUsersObservable: IUser[] = [];
 
   getAllObservable(): Observable<IResponse> {
     return this.http.get<IResponse>(this.baseUrl);

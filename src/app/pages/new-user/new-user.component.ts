@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { IUser } from '../../interfaces/iuser.interface';
+import { UsersServiceService } from '../../services/users-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-user',
@@ -15,6 +17,8 @@ import {
 })
 export class NewUserComponent {
   userForm: FormGroup;
+  userService = inject(UsersServiceService);
+  router = inject(Router);
 
   checkControl(controlName: string, errorName: string): boolean | undefined {
     return (
@@ -45,5 +49,8 @@ export class NewUserComponent {
       []
     );
   }
-  getDataForm() {}
+
+  getDataForm() {
+    console.log(this.userForm.value);
+  }
 }
