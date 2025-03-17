@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/iuser.interface';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UsersServiceService } from '../../services/users-service.service';
 import { toast, NgxSonnerToaster } from 'ngx-sonner';
 
@@ -12,9 +12,11 @@ import { toast, NgxSonnerToaster } from 'ngx-sonner';
 })
 export class ButtonsComponent {
   protected readonly toast = toast;
-  @Input() myUser!: IUser;
+  @Input() myUser: IUser | any;
   userService = inject(UsersServiceService);
   @Output() deleteItemEmit: EventEmitter<Boolean> = new EventEmitter();
+  router = inject(Router);
+  @Input() return: Boolean = false;
 
   deleteUser(id: any) {
     toast.warning(
@@ -24,7 +26,11 @@ export class ButtonsComponent {
           label: 'Aceptar',
           onClick: async () => {
             let response = await this.userService.delete(id);
-            this.deleteItemEmit.emit(true);
+            if (this.deleteItemEmit.observed) {
+              this.deleteItemEmit.emit(true);
+            } else {
+              this.router.navigate(['/home']);
+            }
             toast.success(`Has borrado a ${this.myUser.first_name} con éxito`);
           },
         },

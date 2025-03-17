@@ -1,23 +1,39 @@
-<div class="btn-container column p-3">
-  <button
-    type="button"
-    class="btn btn-outline-primary text-white"
-    [routerLink]="['/user', myUser._id]"
-  >
-    Ver
-  </button>
-  <button
-    type="button"
-    class="btn btn-outline-primary text-white"
-    [routerLink]="['/updateuser', myUser._id]"
-  >
-    Actualizar
-  </button>
-  <button
-    (click)="deleteUser(myUser._id)"
-    type="button"
-    class="btn btn-outline-danger delete"
-  >
-    Eliminar
-  </button>
+<div class="btn-container column">
+  @if (return) {
+  <div class="btn-left">
+    <button
+      type="button"
+      class="return btn btn-outline-primary text-white"
+      [routerLink]="['/home']"
+    >
+      ← Volver
+    </button>
+  </div>
+  }@else {
+  <div class="btn-right">
+    <button
+      type="button"
+      class="btn btn-outline-primary text-white"
+      [routerLink]="['/user', myUser?._id]"
+    >
+      Ver
+    </button>
+  </div>
+  }
+  <div class="btn-right">
+    <button
+      type="button"
+      class="btn btn-outline-primary text-white"
+      [routerLink]="['/updateuser', myUser?._id]"
+    >
+      Actualizar
+    </button>
+    <button
+      (click)="deleteUser(myUser?._id)"
+      type="button"
+      class="btn btn-outline-danger delete"
+    >
+      Eliminar
+    </button>
+  </div>
 </div>
