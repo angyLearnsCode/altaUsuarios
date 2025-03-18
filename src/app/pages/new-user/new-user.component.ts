@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './new-user.component.css',
 })
 export class NewUserComponent {
-  userForm: FormGroup;
+  userForm: FormGroup = new FormGroup({}, []);
   userService = inject(UsersServiceService);
   router = inject(Router);
 
