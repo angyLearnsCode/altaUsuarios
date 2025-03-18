@@ -58,6 +58,7 @@ export class NewUserComponent {
       },
       []
     );
+    console.log(this.userForm);
   }
 
   getDataForm() {
