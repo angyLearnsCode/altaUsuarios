@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/iuser.interface';
 import { Router, RouterLink } from '@angular/router';
 import { UsersServiceService } from '../../services/users-service.service';
-import { toast, NgxSonnerToaster } from 'ngx-sonner';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-buttons',

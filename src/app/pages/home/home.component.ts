@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { UsersServiceService } from '../../services/users-service.service';
-import { IResponse } from '../../interfaces/iresponse.interface';
 import { IUser } from '../../interfaces/iuser.interface';
 import { UserCardComponent } from '../../components/user-card/user-card.component';
 
