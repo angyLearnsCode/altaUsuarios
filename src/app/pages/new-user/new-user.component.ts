@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,9 +16,11 @@ import { Router } from '@angular/router';
   styleUrl: './new-user.component.css',
 })
 export class NewUserComponent {
+  @Input() idUser: string = '';
   userForm: FormGroup = new FormGroup({}, []);
   userService = inject(UsersServiceService);
   router = inject(Router);
+  user!: IUser;
 
   checkControl(controlName: string, errorName: string): boolean | undefined {
     return (
@@ -27,24 +29,26 @@ export class NewUserComponent {
     );
   }
 
-  constructor() {
+  async ngOnInit() {
+    if (this.idUser) {
+      this.user = await this.userService.getById(this.idUser);
+    }
     this.userForm = new FormGroup(
       {
-        first_name: new FormControl('', [
+        _id: new FormControl(this.user._id || null, []),
+        first_name: new FormControl(this.user.first_name || '', [
           Validators.required,
           Validators.minLength(3),
         ]),
-        last_name: new FormControl('', [
+        last_name: new FormControl(this.user.last_name || '', [
           Validators.required,
           Validators.minLength(3),
         ]),
-        email: new FormControl('', [
+        email: new FormControl(this.user.email || '', [
           Validators.required,
-          Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/),
+          Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
         ]),
-        username: new FormControl('', []),
-        password: new FormControl('', []),
-        repitepassword: new FormControl('', []),
+        image: new FormControl(this.user.image || '', [Validators.required]),
       },
       []
     );

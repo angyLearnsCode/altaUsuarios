@@ -48,38 +48,18 @@
       />
     </div>
     <div class="mb-3">
-      <label for="username" class="form-label">Nombre de usuario</label>
+      <label for="image" class="form-label">Imagen de perfil</label>
       <input
         type="text"
-        id="username"
+        id="image"
         class="form-control"
-        formControlName="username"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Contraseña</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        formControlName="password"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="repitepassword" class="form-label"
-        >Repite la contraseña</label
-      >
-      <input
-        type="password"
-        id="repitepassword"
-        class="form-control"
-        formControlName="repitepassword"
+        formControlName="image"
       />
     </div>
     <input
       type="submit"
-      value="Registrar"
       class="btn btn-primary mt-3"
+      [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Registrar'"
       [disabled]="userForm.invalid"
     />
   </form>
