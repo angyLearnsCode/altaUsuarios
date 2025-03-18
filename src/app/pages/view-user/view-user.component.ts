@@ -19,7 +19,6 @@ export class ViewUserComponent {
     let id = this.idUser;
     try {
       this.theUser = await this.userService.getById(id);
-      console.log(this.theUser);
     } catch (error) {
       console.log(error);
     }

@@ -21,6 +21,7 @@ export class NewUserComponent {
   userService = inject(UsersServiceService);
   router = inject(Router);
   user!: IUser;
+  title: string = 'Registrar un nuevo usuario';
 
   checkControl(controlName: string, errorName: string): boolean | undefined {
     return (
@@ -31,7 +32,12 @@ export class NewUserComponent {
 
   async ngOnInit() {
     if (this.idUser) {
-      this.user = await this.userService.getById(this.idUser);
+      try {
+        this.user = await this.userService.getById(this.idUser);
+        this.title = 'Actualizar datos de usuario';
+      } catch (error) {
+        console.log(error);
+      }
     }
     this.userForm = new FormGroup(
       {
@@ -55,6 +61,17 @@ export class NewUserComponent {
   }
 
   getDataForm() {
+    let response: IUser | any;
+    try {
+      if (this.userForm.value._id) {
+        response = this.userService.update(this.userForm.value);
+      } else {
+        response = this.userService.insert(this.userForm.value);
+      }
+    } catch (error) {
+      console.log(error);
+    }
     console.log(this.userForm.value);
+    this.router.navigate(['/home']);
   }
 }
