@@ -10,6 +10,7 @@ import { IUser } from '../interfaces/iuser.interface';
 export class UsersServiceService {
   private http = inject(HttpClient);
   private baseUrl: string = 'https://peticiones.online/api/users';
+  private baseUrl2: string = 'https://peticiones.online/api/users?page=2';
 
   getAllObservable(): Observable<IResponse> {
     return this.http.get<IResponse>(this.baseUrl);
@@ -33,5 +34,9 @@ export class UsersServiceService {
   insert(user: IUser): Promise<IUser> {
     let { _id, ...userBody } = user;
     return lastValueFrom(this.http.post<IUser>(this.baseUrl, userBody));
+  }
+
+  next(): Observable<IResponse> {
+    return this.http.get<IResponse>(this.baseUrl2);
   }
 }

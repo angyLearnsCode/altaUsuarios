@@ -36,7 +36,14 @@ export class HomeComponent {
     }
   }
 
-  gotoPrev() {}
-
-  gotoNext() {}
+  async gotoNext() {
+    this.userService.next().subscribe({
+      next: (data) => {
+        this.arrUsersObservable = data.results;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
 }

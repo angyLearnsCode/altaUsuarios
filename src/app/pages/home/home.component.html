@@ -1,7 +1,7 @@
 <section class="users">
   <div class="row g-4 justify-content-cente mt-1 mx-3">
     <div class="d-flex justify-content-between py-3">
-      <button class="btn btn-warning" (click)="gotoPrev()">Anterior</button>
+      <button class="btn btn-warning" (click)="loadUsers()">Anterior</button>
       <button class="btn btn-warning" (click)="gotoNext()">Siguiente</button>
     </div>
     @for (user of arrUsersObservable; track user._id) {
