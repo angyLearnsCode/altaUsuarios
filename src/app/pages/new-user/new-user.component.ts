@@ -39,6 +39,7 @@ export class NewUserComponent {
         console.log(error);
       }
     }
+
     this.userForm = new FormGroup(
       {
         _id: new FormControl(this.idUser || null, []),
@@ -54,7 +55,12 @@ export class NewUserComponent {
           Validators.required,
           Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
         ]),
-        image: new FormControl(this.user?.image || '', [Validators.required]),
+        image: new FormControl(this.user?.image || '', [
+          Validators.required,
+          Validators.pattern(
+            /^https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg|cc\/\d+)(\?.*)?$/
+          ),
+        ]),
       },
       []
     );
