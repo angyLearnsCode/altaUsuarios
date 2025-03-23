@@ -17,7 +17,16 @@ import { Router } from '@angular/router';
 })
 export class NewUserComponent {
   @Input() idUser: string = '';
-  userForm: FormGroup = new FormGroup({}, []);
+  userForm: FormGroup = new FormGroup(
+    {
+      _id: new FormControl(''),
+      first_name: new FormControl('', []),
+      last_name: new FormControl('', []),
+      email: new FormControl('', []),
+      image: new FormControl('', []),
+    },
+    []
+  );
   userService = inject(UsersServiceService);
   router = inject(Router);
   user!: IUser;
@@ -64,7 +73,6 @@ export class NewUserComponent {
       },
       []
     );
-    console.log(this.userForm);
   }
 
   getDataForm() {
